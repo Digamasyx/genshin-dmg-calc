@@ -1,0 +1,8 @@
+// Todo
+
+1. Finish "routing"
+2. Finish Sidebar
+3. Add a layout to "Main"
+4. Add a dark mode
+5. Split css in multplie files to easy understanding
+6. Try a new color palette

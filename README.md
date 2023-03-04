@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="./src/components/aside/icon/paimon/paimon48.svg" alt="Project logo"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">genshin-dmg-calc</h3>
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+[![Size](https://img.shields.io/github/repo-size/Digamasyx/genshin-dmg-calc?style=for-the-badge)]()
+![GitHub Quality](https://img.shields.io/codefactor/grade/github/Digamasyx/genshin-dmg-calc/main?style=for-the-badge)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Digamasyx/genshin-dmg-calc?style=for-the-badge)]()
+[![License](https://img.shields.io/github/license/Digamasyx/genshin-dmg-calc?style=for-the-badge)](/LICENSE)
+[![Version](https://img.shields.io/github/package-json/v/digamasyx/genshin-dmg-calc?style=for-the-badge)](/package.json)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<p align="center"> A simple project built using reactTS (For learning purposes).
+    <br> 
+</p>
 
-### `npm test`
+## 📝 Table of Contents
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
 
-### `npm run build`
+## 🧐 About <a name = "about"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project is under development, this project is being done using **React** with **Typescript** & **TailwindCSS** for the purpose of Assisting **Genshin Impact** players with (**Damage Calculator**, **Expense Calculator** (Mora or Evolution Materials), Etc...) Even if on the original site it has some of these features. This project is intended to learn about **Typescript** and **TailwindCSS**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### `npm run eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+What things you need to install the software and how to install them.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+node.js
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Installing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+You just need clone the repo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+git clone -b main "https://github.com/Digamasyx/genshin-dmg-calc"
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+End with an example of getting some data out of the system or using it for a little demo.
+
+## 🔧 Running the tests <a name = "tests"></a>
+To run the project just use the following command
+```
+npm start
+or
+npm run start
+```
+To run the tests
+```
+npm run test
+```
+To build the project
+```
+npm run build
+```
+
+### For now i only use the react-scripts to test, run and build
+
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [To be decided]() - Database
+- [To be decided]() - Server Framework
+- [ReactJS](https://reactjs.org/) - Web Framework
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Create-react-app](https://create-react-app.dev/) - Build with Create-react-app using typescript template
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@digamasyx](https://github.com/digamasyx) - Idea & Initial work
+
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- I got the "Logo svg" in [Icons8](https://icons8.com/icons/set/genshin-impact)
+- The others i picked up in [SVGRepo](https://www.svgrepo.com/) 
