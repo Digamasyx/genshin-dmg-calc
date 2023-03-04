@@ -8,7 +8,6 @@ import {
 	Paimon48,
 	HomeSvg,
 	CalcOutlineSvg,
-	HistorySvg,
 	Hourglass,
 } from './icon/svgWrapper';
 

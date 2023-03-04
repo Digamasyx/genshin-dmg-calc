@@ -8,7 +8,8 @@
 <div align="center">
 
 [![Size](https://img.shields.io/github/repo-size/Digamasyx/genshin-dmg-calc?style=for-the-badge)]()
-![GitHub Quality](https://img.shields.io/codefactor/grade/github/Digamasyx/genshin-dmg-calc/master?style=for-the-badge)
+![GitHub Quality](https://img.shields.io/codefactor/grade/github/digamasyx/genshin-dmg-calc?style=for-the-badge)
+![Langs](https://img.shields.io/github/languages/top/Digamasyx/genshin-dmg-calc?style=for-the-badge)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Digamasyx/genshin-dmg-calc?style=for-the-badge)]()
 [![License](https://img.shields.io/github/license/Digamasyx/genshin-dmg-calc?style=for-the-badge)](/LICENSE)
 [![Version](https://img.shields.io/github/package-json/v/digamasyx/genshin-dmg-calc?style=for-the-badge)](/package.json)
