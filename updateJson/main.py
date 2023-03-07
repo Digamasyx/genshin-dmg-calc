@@ -1,147 +1,122 @@
-import json
+import customtkinter
+import Page.main as Pg
+import os
+import pathlib
 
+class App(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
+        self.inpt2Val = ""
+        self.opt = "Ma"
+        self.path = "./Page/package.json"
+        self.fullStr = ""
 
-def main():
-    def verifyStr(data: str, method: str):
-        if method == "inpt1":
-            if data.lower() == "ma" or data.lower() == "major":
-                return -1
-            elif data.lower() == "mi" or data.lower() == "minor":
-                return 0
-            elif data.lower() == "pa" or data.lower() == "patch":
-                return 1
-            elif data.lower() == "re" or data.lower() == "release":
-                return 2
+        self.geometry("500x300")
+        self.title("Update package.json")
+        self.minsize(300, 200)
 
-        elif method == "alpha":
-            if data.lower() == "y" or data.lower() == "yes":
-                return "alpha"
-            elif data.lower() == "n" or data.lower() == "no":
-                return 0
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure((0,1), weight=1)
 
-        elif method == "beta":
-            if data.lower() == "y" or data.lower() == "yes":
-                return "beta"
-            elif data.lower() == "n" or data.lower() == "no":
-                return 0
+        self.textbox = customtkinter.CTkTextbox(master=self, wrap="word")
+        self.textbox.grid(row=0, column=1, columnspan=1, padx=20, pady=(20, 0), sticky="nsew")
+        self.textbox1 = customtkinter.CTkTextbox(master=self, wrap="word")
+        self.textbox1.grid(row=0, column=0, columnspan=1, padx=20, pady=(20, 0), sticky="nsew")
+
+        self.button = customtkinter.CTkButton(master=self, command=self.button_callback, text="Get Version")
+        self.button.grid(row=1, column=1, padx=20, pady=20, sticky="ew")
         
-        elif method == "rc":
-            if data.lower() == "y" or data.lower() == "yes":
-                return "rc"
-            elif data.lower() == "n" or data.lower() == "no":
-                return 0
+        self.button1 = customtkinter.CTkButton(master=self, command=self.button1_callback, text="Update Version", state="disabled")
+        self.button1.grid(row=1, column=0, padx=20, pady=20, sticky="ew")
 
-        else:
-            raise ValueError("Argument of the verifyStr function is incorrect")
-
-    def stripData(data, sep: str, key: None|str = None, subStrip: 0 | 1 = 0):
-        res = [i.strip() for i in data[key].split(sep)]
-        if len(res) == 1:
-            return res
-        if len(res) > 1 or len(res) == 2 and subStrip == 1:
-            strip = [i.strip() for i in res[1].split(".")]
-
-            subRes = [res[0], strip[0], strip[1]]
-            return subRes
-
-    def retStr(data: list):
-        val = ""
-        for i in range(len(data)):
-            if i == 0:
-                val = str(data[i]) + "."
-            if i == 1:
-                val += str(data[i]) + "."
-            if i == 2:
-                if len(data) == 3:
-                    val += str(data[i])
-                else:
-                    val += str(data[i]) + "-"
-            if i == 3:
-                val += data[i] + "." + str(data[i + 1])
-                break
-        return val
-    
-    with open('../package.json', 'r') as file:
-        inpt = input("Major, Minor, Patch or Release (Ma, Mi, Pa, Re or full Length): ")
-        inpt = verifyStr(inpt, "inpt1")
-
-        if inpt != 2:
+        self.combobox = customtkinter.CTkComboBox(master=self, command=self.optionMenu_callback, values=["Ma", "Mi", "Pa", "Re"])
+        self.combobox.grid(row=2, column=0, padx=20, pady=10, sticky="ew")
         
-            inpt2 = input("Alpha(Yes or No | Y or N): ")
+        self.combobox1 = customtkinter.CTkComboBox(master=self, command=self.assign_val, values=["","Alpha", "Beta", "Release Candidate"])
+        self.combobox1.grid(row=2, column=1, padx=20, pady=10, sticky="ew")
 
-            inpt2 = "alpha" if verifyStr(inpt2, "alpha") == "alpha" else None
+    def button_callback(self):
 
-            if inpt2 == None:
-                
-                inpt2 = input("Beta(Yes or No | Y or N): ")
-                inpt2 = "beta" if verifyStr(inpt2, "beta") == "beta" else None
+        self.textbox.delete("0.0", "end")
+        self.textbox.insert("insert", self.pullData("version"))
 
-                if inpt2 == None:
-                    inpt2 = input("Release Candidate(Yes or No | Y or N): ")
+    def button1_callback(self):
+        Pg.UpdateJson(self.fullStr)
 
-                    inpt2 = "rc" if verifyStr(inpt2, "rc") == "rc" else None
+    def buttonMenu_callback(self):
+        
+        self.textbox1.delete("0.0", "end")
+        self.textbox1.insert("insert", self.fullStr)
+        self.data = self.pullData()
+
+    def optionMenu_callback(self, option):
+        self.opt = option
+
+        self.data = self.pullData()
+
+        
+        stripData = Pg.stripData(self.data, "-", "version")
+        val = [i.strip() for i in stripData[0].split(".")]
+        inpt = Pg.verifyStr(option, "inpt1")
+        print(stripData, val, inpt, self.inpt2Val)
+
+        if int(val[0]) == 0 or inpt != 2:
+            if self.inpt2Val == "Alpha":
+                if len(stripData) == 1:
+                    stripData.append("a")
+                    stripData.append(0)
+                else:
+                    self.prevVal = stripData[1]
+
+                    if stripData[1] == "b" or stripData[1] == "rc":
+                        stripData[2] = 0
+
+                    stripData[1] = "a"
+
+            elif self.inpt2Val == "Beta":
+                if len(stripData) == 1:
+                    stripData.append("b")
+                    stripData.append(0)
+                else:
+                    self.prevVal = stripData[1]
+
+                    if stripData[1] == "a" or stripData[1] == "rc":
+                        stripData[2] = 0
+
+                    stripData[1] = "b"
+
+            elif self.inpt2Val == "Release Candidate":
+                if len(stripData) == 1:
+                    stripData.append("rc")
+                    stripData.append(0)
+                else:
+                    self.prevVal = stripData[1]
+
+                    if stripData[1] == "a" or stripData[1] == "b":
+                        stripData[2] = 0
+                    
+                    stripData[1] = "rc"
         else:
-            inpt2 = None
-                
-
-        json_data = json.load(file)
-        item_additional = stripData(json_data, "-", "version", 1)
-        item_val = [i.strip() for i in item_additional[0].split(".")]
-
-        prevVal = ""
-
-        if int(item_val[0]) == 0 and inpt2 != None or inpt2 != None:
-            if inpt2 == "alpha":
-                if len(item_additional) == 1:
-                    item_additional.append("a")
-                    item_additional.append(0)
-                else:
-                    prevVal = item_additional[1]
-                    item_additional[1] = "a"
-
-            elif inpt2 == "beta":
-                if len(item_additional) == 1:
-                    item_additional.append("b")
-                    item_additional.append(0)
-                else:
-                    prevVal = item_additional[1]
-
-                    if item_additional[1] == "a" or item_additional[1] == "rc":
-                        item_additional[2] = 0
-
-                    item_additional[1] = "b"
-            
-            elif inpt2 == "rc":
-                if len(item_additional) == 1:
-                    item_additional.append("rc")
-                    item_additional.append(0)
-                else:
-                    prevVal = item_additional[1]
-
-                    if item_additional[1] == "a" or item_additional[1] == "b":
-                        item_additional[2] = 0
-
-                    item_additional[1] = "rc"
-        elif inpt2 == None:
-            if len(item_additional) > 1:
-                for i in range(len(item_additional)):
-                    item_additional.pop()
-                    if len(item_additional) == 1:
+            if len(stripData) > 1:
+                for i in range(len(stripData)):
+                    stripData.pop()
+                    if len(stripData) == 1:
                         break
 
+        
+
         #Indexes
-        a = int(item_val[0])
-        b = int(item_val[1])
-        c = int(item_val[2])
 
-        # a or b
-        if len(item_additional) > 1:
-            d = item_additional[1]
-            # num
-            e = int(item_additional[2]) + 1
+        a = int(val[0])
+        b = int(val[1])
+        c = int(val[2])
 
-        if len(item_additional) == 1:
-            if inpt == -1:
+        if len(stripData) > 1:
+            d = stripData[1]
+            e = int(stripData[2]) + 1
+        
+        if len(stripData) == 1:
+            if inpt == -1 or inpt == 2:
                 a += 1
                 b = 0
                 c = 0
@@ -150,25 +125,32 @@ def main():
                 c = 0
             elif inpt == 1:
                 c += 1
-            elif inpt == 2:
-                a += 1
-                b = 0
-                c = 0
+        print(stripData)
 
+        self.fullStr = Pg.retStr([a, b, c, d, e]) if len(stripData) > 1 else Pg.retStr([a, b, c])
+        self.buttonMenu_callback()
+        
+        if self.fullStr != "":
+            self.button1.configure(False, state="normal")
         else:
-            if inpt == -1 and prevVal == e:
-                a += 1
-            elif inpt == 0 and prevVal == d:
-                b += 1
-            elif inpt == 1 and prevVal == d:
-                c += 1
-            
-        fullStr = retStr([a, b, c, d, e]) if len(item_additional) > 1 else retStr([a, b, c])
+            self.button1.configure(False, state="disabled")
 
-        json_data["version"] = fullStr
-    with open("../package.json", 'w') as file:
-        json.dump(json_data, file, indent=2)
 
+
+    def assign_val(self, option):
+        self.inpt2Val = option
+        self.optionMenu_callback(self.opt)
+        self.buttonMenu_callback()
+    
+    def pullData(self, key = ""):
+        if key != "":
+            return Pg.pullData(key)
+        else: 
+            return Pg.pullData()
+
+def main():
+    app = App()
+    app.mainloop()
 
 if __name__ == "__main__":
     main()
