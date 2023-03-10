@@ -51,25 +51,29 @@
                 @apply my-px
             }
 
-                .liA_1, .liA_2, .liA_3 {
+                .liA_1 {
                     @apply flex flex-row items-center h-10 px-3 rounded-lg 
                     !text-gray-300 hover:bg-gray-100 hover:!text-gray-700
                 }
 
                 /* Actives */
-                .liA_1.active, .liA_2.active, .liA_3.active {
+                .liA_1.active {
                     @apply !bg-gray-100 !text-gray-700
                 }
 
-                .liA_1_svgSpan, .liA_2_svgSpan, .liA_3_svgSpan {
-                    @apply flex items-center justify-center text-lg text-gray-400
+                .liA_1_svgSpan {
+                    @apply flex items-center justify-center text-lg
                 }
 
-                .liA_1_svgSpan > svg, .liA_2_svgSpan > svg, .liA_3_svgSpan > svg {
+                .liA_1_svgSpan.logout {
+                    @apply text-red-400
+                }
+
+                .liA_1_svgSpan > svg {
                     @apply h-6 w-6
                 }
 
-                .liA_1_text, .liA_2_text, .liA_3_text{
+                .liA_1_text{
                     @apply ml-3
                 }
 
@@ -78,4 +82,21 @@
                 .liSpan_text {
                     @apply flex font-medium text-sm text-gray-300 px-4 py-4 uppercase
                 }
+            
+    /* Main */
+
+    .main_content {
+        @apply flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in
+    }
+
+        /* Header */
+
+        .main_header {
+            @apply bg-white shadow py-4 px-4
+        }
+
+        .main_header_content {
+            @apply flex items-center flex-row
+        }
+        
 }

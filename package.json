@@ -1,10 +1,8 @@
 {
   "name": "genshin-dmg-calc",
   "version": "0.0.1-a.2",
-  "private": true,
   "author": "Digama",
   "license": "MIT",
-  "homepage": "https://github.com/digamasyx/genshin-dmg-calc#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

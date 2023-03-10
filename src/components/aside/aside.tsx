@@ -9,9 +9,15 @@ import {
 	HomeSvg,
 	CalcOutlineSvg,
 	Hourglass,
+	PfpSvg,
+	GearSvg,
+	LogoutSvg,
 } from './icon/svgWrapper';
 
 export default function Aside() {
+	// TestVar
+	const session = true;
+
 	return (
 		<aside className="mainAside">
 			<div className="headerDiv">
@@ -43,9 +49,9 @@ export default function Aside() {
 						to="/calculator"
 						Svg={<CalcOutlineSvg />}
 						elemenClass={{
-							navlink: 'liA_2',
-							svgspan: 'liA_2_svgSpan',
-							textspan: 'liA_2_text',
+							navlink: 'liA_1',
+							svgspan: 'liA_1_svgSpan',
+							textspan: 'liA_1_text',
 						}}
 					/>
 
@@ -54,11 +60,48 @@ export default function Aside() {
 						to="/artifacts"
 						Svg={<Hourglass />}
 						elemenClass={{
-							navlink: 'liA_3',
-							svgspan: 'liA_3_svgSpan',
-							textspan: 'liA_3_text',
+							navlink: 'liA_1',
+							svgspan: 'liA_1_svgSpan',
+							textspan: 'liA_1_text',
 						}}
 					/>
+
+					<Lispan name="Options" class="liSpan_text" />
+
+					<LiComp
+						name="Profile"
+						to="/profile"
+						Svg={<PfpSvg />}
+						elemenClass={{
+							navlink: 'liA_1',
+							svgspan: 'liA_1_svgSpan',
+							textspan: 'liA_1_text',
+						}}
+					/>
+
+					<LiComp
+						name="Settings"
+						to="/settings"
+						Svg={<GearSvg />}
+						elemenClass={{
+							navlink: 'liA_1',
+							svgspan: 'liA_1_svgSpan',
+							textspan: 'liA_1_text',
+						}}
+					/>
+					{session ? (
+						<LiComp
+							name="Logout"
+							Svg={<LogoutSvg />}
+							elemenClass={{
+								navlink: 'liA_1',
+								svgspan: 'liA_1_svgSpan logout',
+								textspan: 'liA_1_text',
+							}}
+						/>
+					) : (
+						''
+					)}
 				</ul>
 			</div>
 		</aside>

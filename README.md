@@ -90,5 +90,6 @@ npm run build
 - [@digamasyx](https://github.com/digamasyx) - Idea & Initial work
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- Todo file "LMAO" in [TODO](./todo.txt)
 - I got the "Logo svg" in [Icons8](https://icons8.com/icons/set/genshin-impact)
 - The others i picked up in [SVGRepo](https://www.svgrepo.com/) 

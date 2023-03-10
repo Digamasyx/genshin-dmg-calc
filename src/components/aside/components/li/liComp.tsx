@@ -6,6 +6,9 @@ import { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 
 export function LiComp({ name, to, Svg, elemenClass }: Liprop) {
+	if (to === undefined) {
+		to = '/';
+	}
 	return (
 		<li className="allLis">
 			<NavLink to={to} className={elemenClass.navlink}>
@@ -26,7 +29,7 @@ export function Lispan(props: { name: string; class: string }) {
 
 interface Liprop {
 	name: string;
-	to: string;
+	to?: string;
 	Svg: ReactElement;
 	elemenClass: {
 		navlink: string;
