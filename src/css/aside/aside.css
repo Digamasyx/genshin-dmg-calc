@@ -1,0 +1,82 @@
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer {
+
+    .mainAside {
+        background-color: #9f7aea;
+        @apply w-64 md:shadow transform -translate-x-full 
+        md:translate-x-0 transition-transform duration-150 ease-in
+        
+    }
+
+    /* Header */
+    .headerDiv {
+        @apply flex items-center justify-center py-4
+    }
+    .headerDiv > div {
+        @apply inline-flex
+    }
+    
+    .headerLink {
+        @apply inline-flex flex-row items-center
+    }
+    
+    .headerSvg {
+        @apply w-10 h-10 text-red-400
+    }
+    
+    .headerText {
+        @apply leading-10 text-gray-100 text-2xl font-bold ml-1 uppercase
+    }
+    
+    /* Content */
+    
+    .asideContent {
+        @apply px-4 py-6
+    }
+    
+    .asideUl {
+        @apply flex flex-col w-full
+    }
+    
+    /* Li */
+    
+    .allLis {
+        @apply my-px
+    }
+    
+    .liA_1 {
+        @apply flex flex-row items-center h-10 px-3 rounded-lg 
+        !text-gray-300 hover:bg-gray-100 hover:!text-gray-700
+    }
+    
+    /* Actives */
+    .liA_1.active {
+        @apply !bg-gray-100 !text-gray-700
+    }
+    
+    .liA_1_svgSpan {
+        @apply flex items-center justify-center text-lg
+    }
+    
+    .liA_1_svgSpan.logout {
+        @apply text-red-400
+    }
+    
+    .liA_1_svgSpan > svg {
+        @apply h-6 w-6
+    }
+    
+    .liA_1_text{
+        @apply ml-3
+    }
+    
+    /* Others */
+    
+    .liSpan_text {
+        @apply flex font-medium text-sm text-gray-300 px-4 py-4 uppercase
+    }
+}

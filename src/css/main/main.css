@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer {
+    
+    /* Main */
+
+    .main_content {
+        @apply flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in
+    }
+
+    /* Header */
+
+    .main_header {
+        @apply bg-white shadow py-4 px-4
+    }
+
+    .main_header_content {
+        @apply flex items-center flex-row
+    }
+
+    /* Section */
+
+    .home_section {
+        @apply text-gray-600
+    }
+
+    .home_container {
+        @apply container px-5 py-24 mx-auto flex flex-wrap
+    }
+
+    .home_hero_img {
+        @apply lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden
+    }
+
+    .hero_img {
+        @apply object-cover object-center h-full w-full
+    }
+}

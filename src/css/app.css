@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@import url("./aside/aside.css");
+@import url("./main/main.css");
+
+@layer {
+
+    .App {
+        @apply flex flex-row min-h-screen bg-gray-100 text-gray-800
+    }
+}
