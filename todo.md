@@ -75,3 +75,9 @@ Something to mention is that while the first value is 0 it means that the progra
 ## References
 - About the versioning system [Wikipedia](https://en.wikipedia.org/wiki/Software_versioning)
 
+## Working on (files)
+
+- [main.css](/src/css/main/main.css)
+- [main.tsx](/src/components/main/main.tsx)
+- [home.tsx](/src/components/paths/home/home.tsx)
+
