@@ -1,5 +1,11 @@
 export function Home() {
     return(
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A ut, sapiente dolores expedita assumenda ex illo! Repellat quibusdam molestiae minus! Magnam totam pariatur nesciunt quidem nulla maxime nemo vero natus?</div>
+        <section className="home_section">
+            <div className="home_container">
+                <div className="home_hero_img">
+                    <img src="https://dummyimage.com/460x500" alt="about" className="hero_img" />
+                </div>
+            </div>
+        </section>
     )
 }
